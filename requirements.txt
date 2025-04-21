@@ -1,6 +1,7 @@
-Flask
+pycryptodome
+flask
 requests
-ffmpeg-python
-pytube
-moviepy
+json
+concurrent
 werkzeug
+ffmpeg-python
