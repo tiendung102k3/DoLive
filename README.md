@@ -21,12 +21,13 @@
 ## ⚙️ Yêu cầu hệ thống
 
 ### Python Packages:
-- Flask
+- flask
 - requests
-- moviepy
-- pytube
 - ffmpeg-python
 - werkzeug
+- pycryptodome
+- json
+- concurrent
 
 ### System Packages:
 - `ffmpeg`: Dùng để xử lý video và livestream
