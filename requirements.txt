@@ -1,0 +1,6 @@
+Flask
+requests
+ffmpeg-python
+pytube
+moviepy
+werkzeug
